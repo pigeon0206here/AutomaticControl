@@ -1,7 +1,7 @@
 # 自动控制原理
 ## some reference
 - 电子书网址：[自动控制原理 第七版 胡寿松主编](https://book.sciencereading.cn/shop/book/Booksimple/onlineRead.do?id=B803FC0277E287629E053010B0A0AD4D5000&readMark=0)
-- 第七版电子书：[自动控制原理 第七版 胡寿松主编](../AutomaticControl/自动控制原理.pdf)
+- 第七版电子书：[自动控制原理 第七版 胡寿松主编](../AutomaticControl/自动控制原理.pdf) （需本地文件）
 - [初学自动控制原理应该看什么书？ -知乎](https://www.zhihu.com/question/20971693)
 
 ## some targets

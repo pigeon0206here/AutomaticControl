@@ -1,0 +1,111 @@
+%-*- coding: UTF-8 -*-
+% TryInLaTeX.tex
+% 自动控制原理
+
+\documentclass[oneside,a4paper]{ctexbook}
+
+\title{自动控制原理学习笔记}
+\author{飞翔的碎碎念}
+\date{\today}
+
+\bibliographystyle{plain}
+
+\usepackage{graphicx}
+\usepackage{geometry}
+
+\geometry{left=3cm,right=3cm,top=2cm,bottom=2cm}
+
+\begin{document}
+
+\maketitle
+
+说两句：
+
+菜狗先看的胡寿松第七版，目前的思路是跟着胡的目录来走的。
+后面会慢慢加国外教材的内容，努力在暑假里多学一点吧。
+
+另外就是作为菜狗本狗，\LaTeX 的使用属于是刚出生级别，这第一份初尝试必然在很多方面具有不足，希望能够获得每一位读者（也许会有吧）对现存问题的指出与建议。
+
+感谢大力支持我的李宇轩同学！
+
+\tableofcontents
+
+\chapter{认识自动控制}
+\section{自动控制的基本原理与方式}
+\subsection{自动控制技术及其应用}
+定义：自动控制≈无人直接操作，依赖机器自身完成人预先设定的任务。
+
+应用：自动化工厂、无人驾驶飞机、无人驾驶汽车、人造卫星着陆其他天体...\dots
+\subsection{自动控制科学}
+*介绍一下那什么发展史
+
+（偷懒，要看去看Markdown那边的Preview去）
+
+\subsection{反馈控制原理}
+\subsubsection{自动控制系统定义}
+有控制装置A和被控物体B，以及将二者连接起来的方式C和B的输出量（被控量）D。
+A和B借助C的存在，形成一个有机的整体，也就是自动控制系统。
+
+B本身是受A控制的，被控量D是用以衡量B被控制的状态的参考。
+D可以是具体的物理量（如温度、压强、速度等），也可以是抽象出来的物理规律或数学规律（如飞行轨迹、记录曲线等）。
+
+A是控制B的所有存在的总体，对B施加的方式C可以有很多很多种。
+胡寿松的中文课本里主要介绍最基本的一种，反馈原理。反馈原理需要D的支持。
+\subsubsection{分析}
+例1：手从桌上取书。
+
+总之用文字语言转述的话，就是：
+
+定义:Input=书的位置，A=眼睛，B=大脑，Output=手与书的相对位置
+
+    (不存在的图图)%\includegraphics{c:\Users\dovegu\AppData\Roaming\Tencent\QQ\Temp\KYRK`6`DMPY`BZ[V{S0I_RN.png}
+    
+    （流程图用Markdown画了，但是图片一下子弄不过来，先挂起来，以后会用LaTeX画图了再补）（说起来这个图其实更适合用\LaTeX 画呢）
+
+\begin{enumerate}    
+    \item 书的位置信息作为输入信号输入到眼睛，经过眼睛处理为生物信号后传递给大脑；
+    \item 大脑作为神经中枢，与眼睛、手臂一同承担着控制装置的角色；
+    \item 大脑将生物信号经过手臂传递给手，调整手与书籍之间的相对位置；
+    \item 手在此时是被控物体，被控量是物理量手与书之间的距离；
+    \item 被控量经由眼睛的测量，反馈信息给大脑，由大脑通过对被控对象手的控制，来实现对被控量手与书的距离的调整；
+    \item 重复步骤，直到被控量最终达到预定值，完成手取书的动作。
+\end{enumerate}
+
+命名：按功能划分，有测量元件（眼）、比较元件（脑）和执行元件（手臂+手）。统称控制装置。
+
+之后介绍的是正负反馈。
+
+负反馈：
+（后面龙门刨床的例子自己看吧，不复述了，理解就行，原理和手拿书一样的。
+\begin{enumerate}
+    \item 元件含义
+    \begin{enumerate}
+        \item CF：调节触发器，关联电压$u_k$
+        \item KZ：给SM供电的晶体管,关联电压$u_a$
+        \item TG：测速发电机，关联电压$u_t$,有关系式$u_t\propto n_{实际}$。$u_t$为负反馈电压。
+        \item FD：放大器，关联电压$u_0$和$\Delta u$。$u_0$为给定电压，$\Delta u = u_0 - u_t$为偏差电压。由于$\Delta u$较小，无法触发KZ，于是增加FD用于放大
+    \end{enumerate}
+    \item 负反馈思路
+    \begin{itemize}
+        \item $u_0 \to n$
+        \item $n_{10} \to u_t \to \Delta u \to u_k \to u_a \to n_{11}$
+        \item 控制过程（文字描述自己看书）：$n_{10}\downarrow \to u_t\downarrow \to \Delta u\uparrow \to u_k\uparrow \to u_a\uparrow \to n_{11}\uparrow$（其中$n_{10}$和$n_{11}$都是SM的实际运行速度）
+    \end{itemize}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\chapter{自动控制的数学模型}
+
+
+\bibliography{math}
+
+
+\end{document}

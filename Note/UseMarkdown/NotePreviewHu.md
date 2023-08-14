@@ -35,7 +35,7 @@
    D --> |要求| G[按照某一给定规律运行,如飞行航线/记录曲线]
 
    ```
-    >mermaid使用介绍（csdn版）：[mermaid绘制流程图介绍](https://blog.csdn.net/anzaigongzi/article/details/127993874?spm=1001.2014.3001.5502)
+    >mermaid使用介绍（csdn版）：[mermaid绘制流程图介绍](https://zjq2048.blog.csdn.net/article/details/121574296?spm=1001.2014.3001.5502)
 
 `要先去试试用LaTeX产出笔记啦，之后要画流程图/思维导图梳理的话再来这边了！`
 

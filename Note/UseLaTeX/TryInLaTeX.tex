@@ -12,8 +12,16 @@
 
 \usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{xeCJK}
 
-\geometry{left=3cm,right=3cm,top=2cm,bottom=2cm}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbset{colframe=blue!60!white,colback=white,colupper=blue!50!black,
+fonttitle=\bfseries,nobeforeafter,center title}
+\tcbsetforeverylayer{colframe=blue!75!black}
+%\newcolorbox{mybox}[1]{colback=blue!5!white,colframe=blue!75!black,fonttitle=\bfseries,title={#1}}
+
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
 
 \begin{document}
 
@@ -32,6 +40,7 @@
 
 
 \part{Modern Control System}
+
 \chapter{控制系统导论}
 \section{引言}
 摘录
@@ -44,14 +53,199 @@
     \begin{itemize}
         \item 增加了对实际输出的测量，将实际输出与预期输出进行对比
         \item 输出测量值→反馈信号
-        \item 
+        \item 比较系统函数，通过比较得到的偏差作为调整控制的依据
+        \item 优点：抗干扰+衰减测量噪声    
     \end{itemize}
-    \item 
-    \item 
+    \begin{tcolorbox}[reset]
+        闭环控制系统对输出进行测量，将此测量信号反馈，并与预期的输入（参考或指令输入）进行比较。
+    \end{tcolorbox}
+    \item 多回路反馈控制系统
+    \begin{itemize}
+        \item 更贴合实际情况
+        \item 可以是内环$+$外环的结构，内环有专用的一套控制器和传感器来调控监测并调控偏差，外环同理。
+        \item 利用单回路系统的思想来学习多回路的系统
+    \end{itemize}
+    \item 多变量控制系统
+    \begin{itemize}
+        \item 举个不知道恰不恰当的例子，类似于数学上从一元方程推广到多元方程的感觉。影响系统输出的自变量增加了，系统最终输出的所要变量也增多了。
+        \item 比如高炉炼铁，自变量上可以有温度、投料比、炼制时间等，因变量（输出响应）可以有产品纯度、硬度、柔韧性等。
+        \item （不知道对不对）
+    \end{itemize}
 \end{enumerate}
 
+\section{自动控制简史}
+不做具体摘录了，看得开心(·v·)✧
+\begin{itemize}
+    \item 公元前300年\~{}公元前1年之间\phantom{哟}古希腊\phantom{嚯}浮球调节装置
+    \item 公认最早应用于工业过程的自动反馈控制器：1769年\phantom{占}瓦特\phantom{位}飞球调节器→控制蒸汽机转速
+    \item 1868年\phantom{的}麦克斯韦（J.C.Maxwell）\phantom{字}微分方程→一类调节器模型。重点：研究系统参数对系统性能的影响。
+    \item 二战前\phantom{符}伯德（H.W.Bode）、奈奎斯特（H.Nyquist）和布莱克（H.S.Black）\phantom{一}电话系统+电子反馈放大器
+    \item ※美国和西欧：频域；前苏联和东欧：时域。
+    \item 自动化：对工业过程（加工、制造等）实施自动控制而非人工控制的方法。
+    \item 生产率、劳动生产效率
+    \item （太多了不抄了自己看当作科普）
+    \item 二战期间\phantom{二}自动控制理论及应用→发展高潮。飞机自动驾驶仪、火炮定位系统、雷达天线控制系统等
+    \item 20世纪40年代，控制工程发展为工程科学（哇塞）
+    \item 二战后\phantom{一}拉普拉斯（Laplace）变换+频域复平面应用→频域方法主导。
+    \item 20世纪50年代\phantom{字}s平面方法，esp根轨迹法
+    \item 人造卫星和空间时代\phantom{一}时域方法：最优控制理论、鲁棒系统。→控制工程要重视时域和频域。
+\end{itemize}
 
-\part{自动控制原理 胡寿松 第七版}
+\section{控制系统实例}
+
+摘录
+\begin{enumerate}
+    \item 控制工程关注分析与设计面向目标的系统。
+    \item 现代控制理论关注具有自组织、自学习、自适应、鲁棒性和最优性等特征的系统。
+    \item 反馈控制
+    \begin{itemize}
+        \item 汽车驾驶系统、远洋轮、大型飞机。
+        
+        分析→测量通过a.视觉和触觉（身体运动）或b.手（传感器）感知方向盘变化来实现
+
+        \item 人工调节容器内的液面高度或位置。
+        
+        分析→系统的输入（预期输出）是液面参考位置（应该存放在操作手的脑海中）；控制放大器为操作手本人；传感器则是操作手视觉。
+
+        \item 类似系统：冰箱（预期/设定的温度）→恒温器（测量实际温度\&设定温度的偏差）→压缩机（起功率放大器作用）\ldots
+    \end{itemize}
+    \item 反馈控制系统的工业应用
+    \begin{itemize}
+        \item 机器人（用于替代人劳动的自动化机器，且带有拟人化特征）
+        \item 电力工业（需要妥善处理生产过程中各变量间关系以提高产能）
+        \item 冶金工业（控制冶炼温度、板材宽/厚/质量等）
+        \item 农业
+        \item \ldots
+        \item （自己看去吧，都是例子，主要是了解原理）
+    \end{itemize}
+\end{enumerate}
+
+\section{工程设计}
+摘录
+\begin{enumerate}
+    \item 工程设计是工程师的中心工作。\textbf{分析和创新}占据重要地位。
+    \begin{tcolorbox}[reset]
+        设计就是为达到特定的目的，构思或创建系统的结构、组成和技术细节的过程。
+    \end{tcolorbox}
+    \item 设计活动规划特定产品/系统的诞生。\begin{enumerate}
+        \item 明确用户需求
+        \item 论证设计要求
+        \item 开发设计方案
+        \item 选定解决方案
+    \end{enumerate}步骤详见p12.
+
+    \item 时间限制是影响设计产品的一个重要因素。
+    \item 设计规范/设计要求：对产品或系统将是什么，以及能够做什么的简洁而明确的说明。
+    \item 技术指标的4个因素。\begin{itemize}
+        \item 设计复杂性
+        \item 折中处理
+        \item 设计差异
+        \item 风险
+    \end{itemize}
+    \item 分析\&综合
+    \begin{quote}
+    \textbf{分析：}聚焦眼前事物，通过对物理系统的各种模型的进行细致的考察，得出影响系统稳定性的参数，以确定改进方向。
+
+    \textbf{综合：}侧重于从已有系统中搭建新的、功能更完备的系统。
+    \end{quote}
+    \item \textbf{设计过程本质是一个不断迭代的过程，但我们始终要找到一个起点。}
+    \item 参数分析和优化
+    \begin{enumerate}
+        \item 参数分析
+        \begin{enumerate}
+            \item 辨别关键参数
+            \item 构建整个系统
+            \item 评估系统满足需求的程度
+        \end{enumerate}这三步形成了一个迭代循环。
+        \item 优化
+    \end{enumerate}
+\end{enumerate}
+
+\section{控制系统设计}
+
+\begin{tcolorbox}[colback=white,colframe=blue!70!green,colupper=blue!45!black,fonttitle=\bfseries,title=书中章节与控制系统的设计流程模块关系]
+    \begin{enumerate}
+        \item \textbf{确定控制目标和受控变量，并定义系统性能指标设计要求：}第1章、第3章、第4章和第13章
+        \item \textbf{系统定义和建模：}第2章至第4章，第11章至第13章
+        \item \textbf{控制系统设计，全系统集成的仿真和分析：}第4章至第13章
+    \end{enumerate}
+流程图见Markdown。
+\end{tcolorbox}
+\begin{enumerate}
+    \item 第一步：确定系统目标
+    \item 第二步：确定需要控制的系统变量
+    \item 第三步：拟定技术设计规范/设计要求，一边确定系统变量应该达到的精度指标。
+    \begin{itemize}    
+        \item 抗干扰能力
+        \item 对指令的响应能力
+        \item 产生实用执行驱动信号的能力
+        \item 灵敏度
+        \item 鲁棒性
+        \item \ldots
+    \end{itemize}以上是应达到的性能。
+
+    \item 第四步：设计出能够实现预期控制性能的系统结构配置。
+    系统通常结构配置见课本p2的图1.3，以下是具体包含内容：
+    \begin{itemize}
+        \item 传感器
+        \item 受控对象
+        \item 执行机构
+        \item 控制器
+    \end{itemize}
+    \item 第五步：选定执行机构，这与受控对象有关。
+    \item 第六步：选择合适的传感器。随后可得到控制系统的这些组成部件的模型。
+    →插个眼，建模在这本书前几章会涉及，并回答一些相关的基本问题，让我们了解数学建模的概念。
+    \item 第七步：选择控制器。
+    \item 第八步：优化系统参数，以便获得所期望的系统性能。
+    \item 第九步：重复第一到八步，直到达到预期。
+\end{enumerate}
+
+\section{机电一体化系统}
+基本要素包括：
+\begin{itemize}
+    \item 物理系统建模
+    \item 传感器与执行机构
+    \item 信号与系统←\dag 与控制系统联系紧密
+    \item 计算机与逻辑系统
+    \item 软件与数据获取   
+\end{itemize}
+实例有混合动力汽车、风力发电系统、嵌入式计算机（嵌入式控制系统！）
+\section{绿色工程}
+环保嗯嗯。主要提了绿色系统的基本原则，归纳了绿色工程可应用的五大领域。闲了可以读一读这一节。
+
+\section{控制系统前瞻}
+控制系统的目标：使系统具有更高的柔性和自主性。柔性按我的理解就是对环境的适应能力强、可实际应用的领域多，可以实现“一机普适不同环境”。而自主性按照书本里的示例，可以简述为在执行控制程序时不那么需要人类干涉调整，依靠机器自身就可以完成预期工作。
+
+柔性低的改进要点之一是发展计算机视觉(Computer Vision)，从软件和硬件上优化机器自身对周围环境的信息捕获与处理能力。另外的改进要点一个是优化人机交互方式，使机器更好地执行人下达的任务，也让人可以更轻松地完成对机器地操控；另一个是改进机器自身的监督控制能力。
+
+
+\textcolor{black!35!}{\#出于简洁的考虑，省略了1.9设计实例与1.10循序渐进设计实例这两节，以及本章后的对应习题及答案。这两节主要涉及的都是分析设计流程中的某些步骤的具体操作方法，目前笔者急于进入后续内容的学习，故暂不做摘录。（主要还是人菜，开学前多少要学一点老师上课讲的东西，不然肯定挂科）\#}
+
+
+\chapter{系统数学模型}
+\chapter{自动控制的数学模型}
+\section{引言}
+理解和控制复杂系统 $\rightarrow$ 获得系统定量数学模型 $\rightarrow$ 仔细分析系统变量间的相互关系，建立数学模型 %$\rightarrow$ 
+
+系统本质上是动态的 $\rightarrow$ 系统行为要用微分方程组进行描述 $\rightarrow$ 如果方程（组）可以线性化 $\rightarrow$ 可用拉普拉斯变换进行简化
+
+系统本身过于复杂 $\rightarrow$ 对系统运动情况做出合理假设
+
+分析研究动态系统的步骤：
+\begin{enumerate}
+    \item 构建和定义系统及其元件。
+    \item 基于基本的物理模型，确定必要的假设条件并推导数学模型。
+    \item 列写描述该模型的数学方程（组）。
+    \item 求解方程（组），得到所求输出变量的解。
+    \item 检查假设条件和所得到的解。
+    \item 如果必要，重新分析和设计系统。
+\end{enumerate}
+
+\section{物理系统的微分方程（组）}
+
+
+
+\part{自动控制原理}
 \chapter{认识自动控制（还有系统）}
 
 \section{自动控制的基本原理与方式}
@@ -122,9 +316,6 @@ A是控制B的所有存在的总体，对B施加的方式C可以有很多很多�
 
 
 \emph{切换到 Modern Control System这本书}
-\chapter{自动控制的数学模型}
-
-
 
 
 
